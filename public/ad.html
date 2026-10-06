@@ -37,7 +37,7 @@
     .ad-dock {
       position: fixed;
       left: 50%;
-      bottom: 12px;
+      bottom: 17px;
       transform: translateX(-50%);
       width: min(720px, calc(100% - 20px));
       z-index: 9999;
@@ -355,7 +355,7 @@
     @media (max-width: 600px) {
       .ad-dock {
         width: calc(100% - 12px);
-        bottom: 6px;
+        bottom: 11px;
       }
 
       .ad-box {
@@ -386,7 +386,11 @@
 
     @media (max-width: 390px) {
       .ad-description {
-        display: none;
+        display: block;
+        font-size: 10px;
+        white-space: normal;
+        line-height: 1.3;
+        padding-right: 25px;
       }
     }
   </style>
@@ -506,7 +510,7 @@
 
 
     /*
-     * Click vào quảng cáo
+     * Click vào quảng cáo.
      *
      * Không tính nút X.
      */
@@ -548,25 +552,23 @@
      * QUẢNG CÁO
      * =========================
      *
-     * Trạng thái ban đầu:
-     * - Quảng cáo hiện
-     * - X chưa hiện
+     * 0s:
+     * Quảng cáo hiện.
+     * X chưa hiện.
      *
-     * Sau 30 giây:
-     * - X hiện
+     * 30s:
+     * X hiện.
      *
      * Người dùng phải tự bấm X.
      *
      * Sau khi bấm X:
-     * - Quảng cáo đóng
-     * - Chờ 30 giây
+     * Quảng cáo đóng.
      *
-     * Sau 30 giây:
-     * - Quảng cáo hiện lại
-     * - X lại ẩn
+     * 30s sau:
+     * Quảng cáo hiện lại.
      *
-     * Sau 30 giây tiếp:
-     * - X hiện
+     * 30s tiếp:
+     * X hiện.
      *
      * Lặp vô hạn.
      */
@@ -577,7 +579,7 @@
 
 
     /*
-     * Bắt đầu chu kỳ 30 giây
+     * Bắt đầu thời gian chờ
      * để hiện X.
      */
     function startCloseTimer() {
@@ -596,7 +598,7 @@
 
 
     /*
-     * Khi người dùng bấm X.
+     * Người dùng bấm X.
      */
     adClose.addEventListener("click", function(event) {
 
@@ -604,21 +606,19 @@
 
 
       /*
-       * Ẩn quảng cáo.
+       * Đóng quảng cáo.
        */
       adBox.classList.add("hidden");
 
 
       /*
-       * X cũng phải biến mất
-       * khi quảng cáo đóng.
+       * Ẩn X.
        */
       adClose.classList.remove("visible");
 
 
       /*
-       * Chờ đúng 30 giây
-       * rồi hiện quảng cáo lại.
+       * Chờ 30 giây rồi hiện lại.
        */
       clearTimeout(showAdTimer);
 
@@ -628,8 +628,8 @@
 
 
         /*
-         * Quảng cáo vừa hiện lại:
-         * X tiếp tục chờ 30 giây.
+         * Quảng cáo hiện lại.
+         * X phải chờ thêm 30 giây.
          */
         startCloseTimer();
 
@@ -641,8 +641,8 @@
     /*
      * Bắt đầu chu kỳ đầu tiên.
      *
-     * Quảng cáo hiện ngay,
-     * nhưng X phải đợi 30 giây.
+     * Quảng cáo hiện ngay.
+     * X chờ 30 giây.
      */
     startCloseTimer();
 
