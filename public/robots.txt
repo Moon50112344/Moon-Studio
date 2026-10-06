@@ -2,5 +2,3 @@ User-agent: *
 Allow: /
 
 Sitemap: https://moonstudio.us.ci/sitemap.xml
-Sitemap: https://wifichecker.moonstudio.us.ci/sitemap.xml
-Sitemap: https://gitshowcase.moonstudio.us.ci/sitemap.xml
