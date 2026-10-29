@@ -1,0 +1,491 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Moon Studio</title>
+
+<style>
+:root {
+  --bg: #070b14;
+  --white: #fff;
+  --blue: #2f8bff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  overflow-x: hidden;
+  background: var(--bg);
+  font-family: Inter, Arial, sans-serif;
+}
+
+main {
+  width: min(96vw, 1000px);
+  text-align: center;
+}
+
+.logo {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.ink {
+  fill: none;
+  stroke-width: 7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: var(--len, 1000);
+  stroke-dashoffset: var(--len, 1000);
+}
+
+.white-ink {
+  stroke: var(--white);
+}
+
+.blue-ink {
+  stroke: var(--blue);
+}
+
+/* Tagline sát phần nét vẽ của logo */
+.caption {
+  margin-top: -1px;
+  color: #8b9ab4;
+  font-size: 9px;
+  line-height: 1.4;
+  letter-spacing: 3px;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity .5s ease;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 24px;
+  padding: 0 8px;
+}
+
+button {
+  padding: 11px 16px;
+  color: #fff;
+  background: #101a2c;
+  border: 1px solid #283954;
+  border-radius: 9px;
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  transition: border-color .2s, background .2s;
+}
+
+button:hover {
+  border-color: var(--blue);
+  background: #14213a;
+}
+
+button:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+}
+
+@media (max-width: 600px) {
+  .caption {
+    margin-top: -1px;
+    font-size: 8px;
+    letter-spacing: 2px;
+  }
+
+  .actions {
+    gap: 8px;
+    margin-top: 20px;
+  }
+
+  button {
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .caption,
+  button {
+    transition: none;
+  }
+}
+</style>
+</head>
+
+<body>
+<main>
+
+<svg id="logo" class="logo"
+     viewBox="0 0 1000 174"
+     xmlns="http://www.w3.org/2000/svg"
+     role="img"
+     aria-label="Moon Studio">
+
+  <g id="drawing">
+
+    <!-- M -->
+    <path class="ink white-ink" data-start="0"
+      d="M75 155
+         C78 115 82 75 88 53
+         C91 43 96 47 100 62
+         L127 128
+         C132 141 136 138 141 123
+         L169 58
+         C174 43 180 47 182 64
+         L191 155"/>
+
+    <!-- o -->
+    <path class="ink white-ink" data-start="0.65"
+      d="M239 119
+         C239 91 254 78 272 82
+         C293 86 299 108 292 130
+         C286 150 264 162 249 146
+         C242 139 239 129 239 119 Z"/>
+
+    <!-- o -->
+    <path class="ink white-ink" data-start="1.3"
+      d="M312 119
+         C312 93 327 80 345 84
+         C366 88 372 109 365 131
+         C359 151 337 161 322 146
+         C315 139 312 129 312 119 Z"/>
+
+    <!-- n -->
+    <path class="ink white-ink" data-start="1.95"
+      d="M390 151
+         C392 127 393 104 396 86
+         C398 77 403 81 404 92
+         L404 102
+         C414 84 429 79 441 87
+         C451 94 451 107 450 121
+         L448 153"/>
+
+    <!-- Studio -->
+    <g transform="translate(45 0)">
+
+      <!-- S -->
+      <path class="ink blue-ink" data-start="2.6"
+        d="M550 69
+           C534 52 505 49 489 61
+           C472 74 482 94 503 103
+           L530 116
+           C554 128 550 148 530 158
+           C510 169 487 158 476 146"/>
+
+      <!-- t -->
+      <path class="ink blue-ink" data-start="3.25"
+        d="M585 62
+           C580 89 576 121 578 143
+           C579 156 591 161 604 151
+           M566 91 L611 91"/>
+
+      <!-- u -->
+      <path class="ink blue-ink" data-start="3.9"
+        d="M630 88
+           L628 130
+           C627 149 641 158 654 148
+           C665 139 670 120 673 91
+           L671 154"/>
+
+      <!-- d -->
+      <path class="ink blue-ink" data-start="4.55"
+        d="M743 112
+           C737 91 722 82 708 91
+           C692 101 692 128 703 144
+           C714 159 734 151 742 133
+           L752 52
+           L744 154"/>
+
+      <!-- Thân i -->
+      <path id="iStem"
+        class="ink blue-ink"
+        data-start="5.2"
+        d="M773 93 L769 153"/>
+
+      <!-- Chấm i -->
+      <circle id="iDot"
+        cx="773" cy="68" r="4"
+        fill="#2f8bff"
+        opacity="0"/>
+
+      <!-- o cuối -->
+      <path class="ink blue-ink" data-start="5.85"
+        d="M795 119
+           C795 93 810 80 828 84
+           C849 88 855 109 848 131
+           C842 151 820 161 805 146
+           C798 139 795 129 795 119 Z"/>
+
+    </g>
+  </g>
+</svg>
+
+<div id="caption" class="caption">
+  CREATING · EXPLORING · SHARING
+</div>
+
+<div class="actions">
+  <button id="downloadBg" type="button">
+    ↓ Tải PNG có nền
+  </button>
+
+  <button id="downloadTransparent" type="button">
+    ↓ Tải PNG trong suốt
+  </button>
+
+  <button id="replay" type="button">
+    ↻ Vẽ lại logo
+  </button>
+</div>
+
+</main>
+
+<script>
+const svg = document.getElementById("logo");
+const paths = [...document.querySelectorAll("#drawing .ink")];
+const iStem = document.getElementById("iStem");
+const iDot = document.getElementById("iDot");
+const caption = document.getElementById("caption");
+
+const replay = document.getElementById("replay");
+const downloadBg = document.getElementById("downloadBg");
+const downloadTransparent =
+  document.getElementById("downloadTransparent");
+
+let frame = 0;
+let runId = 0;
+
+const duration = 650;
+const timeScale = 1000;
+
+function animateLogo() {
+  const thisRun = ++runId;
+
+  cancelAnimationFrame(frame);
+
+  caption.style.opacity = "0";
+  iDot.setAttribute("opacity", "0");
+
+  const items = paths.map(path => {
+    const length = path.getTotalLength();
+
+    path.style.setProperty("--len", length);
+    path.style.strokeDasharray = length;
+    path.style.strokeDashoffset = length;
+
+    return {
+      path,
+      length,
+      start: Number(path.dataset.start) * timeScale
+    };
+  });
+
+  const total = Math.max(
+    ...items.map(item => item.start + duration)
+  );
+
+  const stemEnd =
+    Number(iStem.dataset.start) * timeScale + duration;
+
+  const startTime = performance.now();
+  let dotShown = false;
+
+  function tick(now) {
+    if (thisRun !== runId) return;
+
+    const elapsed = now - startTime;
+
+    for (const item of items) {
+      const progress = Math.max(
+        0,
+        Math.min(1, (elapsed - item.start) / duration)
+      );
+
+      const eased =
+        progress * progress * (3 - 2 * progress);
+
+      item.path.style.strokeDashoffset =
+        item.length * (1 - eased);
+    }
+
+    if (!dotShown && elapsed >= stemEnd + 180) {
+      iDot.setAttribute("opacity", "1");
+      dotShown = true;
+    }
+
+    if (elapsed < total + 250) {
+      frame = requestAnimationFrame(tick);
+    } else {
+      finishLogo(thisRun);
+    }
+  }
+
+  frame = requestAnimationFrame(tick);
+}
+
+function finishLogo(run) {
+  if (run !== runId) return;
+
+  paths.forEach(path => {
+    path.style.strokeDashoffset = "0";
+  });
+
+  iDot.setAttribute("opacity", "1");
+  caption.style.opacity = "1";
+}
+
+/*
+ * Tạo một SVG độc lập để xuất PNG.
+ * Giữ nguyên các nét logo và thêm tagline vào ảnh.
+ */
+function createExportSvg(withBackground) {
+  const clone = svg.cloneNode(true);
+
+  clone.removeAttribute("class");
+  clone.removeAttribute("id");
+  clone.setAttribute("width", "1000");
+  clone.setAttribute("height", "192");
+  clone.setAttribute("viewBox", "0 0 1000 192");
+
+  clone.querySelectorAll(".ink").forEach(path => {
+    const isBlue = path.classList.contains("blue-ink");
+
+    path.setAttribute("fill", "none");
+    path.setAttribute("stroke", isBlue ? "#2f8bff" : "#ffffff");
+    path.setAttribute("stroke-width", "7");
+    path.setAttribute("stroke-linecap", "round");
+    path.setAttribute("stroke-linejoin", "round");
+    path.setAttribute("stroke-dasharray", "none");
+    path.setAttribute("stroke-dashoffset", "0");
+    path.style.strokeDasharray = "none";
+    path.style.strokeDashoffset = "0";
+  });
+
+  const dot = clone.querySelector("#iDot");
+  dot.setAttribute("opacity", "1");
+
+  if (withBackground) {
+    const background = document.createElementNS(
+      "http://www.w3.org/2000/svg",
+      "rect"
+    );
+
+    background.setAttribute("x", "0");
+    background.setAttribute("y", "0");
+    background.setAttribute("width", "1000");
+    background.setAttribute("height", "192");
+    background.setAttribute("fill", "#070b14");
+
+    clone.insertBefore(background, clone.firstChild);
+  }
+
+  const tagline = document.createElementNS(
+    "http://www.w3.org/2000/svg",
+    "text"
+  );
+
+  tagline.setAttribute("x", "500");
+  tagline.setAttribute("y", "184");
+  tagline.setAttribute("text-anchor", "middle");
+  tagline.setAttribute("fill", "#8b9ab4");
+  tagline.setAttribute("font-family", "Inter, Arial, sans-serif");
+  tagline.setAttribute("font-size", "9.4");
+  tagline.setAttribute("letter-spacing", "3.1");
+
+  tagline.textContent = "CREATING · EXPLORING · SHARING";
+  clone.appendChild(tagline);
+
+  return clone;
+}
+
+function downloadPng(withBackground) {
+  const clone = createExportSvg(withBackground);
+  const source = new XMLSerializer().serializeToString(clone);
+  const svgBlob = new Blob(
+    [source],
+    { type: "image/svg+xml;charset=utf-8" }
+  );
+
+  const objectUrl = URL.createObjectURL(svgBlob);
+  const image = new Image();
+
+  image.onload = () => {
+    const canvas = document.createElement("canvas");
+    canvas.width = 2000;
+    canvas.height = 384;
+
+    const ctx = canvas.getContext("2d");
+
+    if (!ctx) {
+      URL.revokeObjectURL(objectUrl);
+      alert("Không thể tạo ảnh trên trình duyệt này.");
+      return;
+    }
+
+    if (withBackground) {
+      ctx.fillStyle = "#070b14";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
+
+    ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+    URL.revokeObjectURL(objectUrl);
+
+    canvas.toBlob(blob => {
+      if (!blob) {
+        alert("Tạo PNG thất bại. Hãy thử lại nhé.");
+        return;
+      }
+
+      const pngUrl = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+
+      link.href = pngUrl;
+      link.download = withBackground
+        ? "moon-studio.png"
+        : "moon-studio-transparent.png";
+
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+
+      setTimeout(() => URL.revokeObjectURL(pngUrl), 1000);
+    }, "image/png");
+  };
+
+  image.onerror = () => {
+    URL.revokeObjectURL(objectUrl);
+    alert("Không thể tạo ảnh. Hãy thử lại nhé.");
+  };
+
+  image.src = objectUrl;
+}
+
+replay.addEventListener("click", animateLogo);
+
+downloadBg.addEventListener("click", () => {
+  downloadPng(true);
+});
+
+downloadTransparent.addEventListener("click", () => {
+  downloadPng(false);
+});
+
+animateLogo();
+</script>
+</body>
+</html>
